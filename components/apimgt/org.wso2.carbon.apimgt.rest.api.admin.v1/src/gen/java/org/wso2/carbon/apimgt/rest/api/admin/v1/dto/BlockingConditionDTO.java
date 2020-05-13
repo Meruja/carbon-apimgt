@@ -99,6 +99,24 @@ public class BlockingConditionDTO   {
   }
 
 
+  /**
+   * Status of the blocking condition
+   **/
+  public BlockingConditionDTO conditionStatus(Boolean conditionStatus) {
+    this.conditionStatus = conditionStatus;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "true", value = "Status of the blocking condition")
+  @JsonProperty("conditionStatus")
+  public Boolean isConditionStatus() {
+    return conditionStatus;
+  }
+  public void setConditionStatus(Boolean conditionStatus) {
+    this.conditionStatus = conditionStatus;
+  }
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {

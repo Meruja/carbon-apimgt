@@ -567,16 +567,14 @@ public class APIAdminImpl implements APIAdmin {
     }
 
     public boolean isCategoryNameExists(String categoryName, String uuid, int tenantID) throws APIManagementException {
-
-        return apiMgtDAO.isAPICategoryNameExists(categoryName, uuid, tenantID);
+        return ApiMgtDAO.getInstance().isAPICategoryNameExists(categoryName, uuid, tenantID);
     }
 
     public APICategory getAPICategoryByID(String apiCategoryId) throws APIManagementException {
-
-        APICategory apiCategory = apiMgtDAO.getAPICategoryByID(apiCategoryId);
+        APICategory apiCategory = ApiMgtDAO.getInstance().getAPICategoryByID(apiCategoryId);
         if (apiCategory != null) {
             return apiCategory;
-        } else {
+        }else {
             String msg = "Failed to get APICategory. API category corresponding to UUID " + apiCategoryId
                     + " does not exist";
             throw new APIMgtResourceNotFoundException(msg);
@@ -584,7 +582,6 @@ public class APIAdminImpl implements APIAdmin {
     }
 
     private int isCategoryAttached(APICategory category, String username) throws APIManagementException {
-
         APIProviderImpl apiProvider = new APIProviderImpl(username);
         //no need to add type prefix here since we need to ge the total number of category associations including both
         //APIs and API categories
